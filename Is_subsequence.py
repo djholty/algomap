@@ -1,17 +1,20 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        for letter in s:  #loop through the first word and check if each letter is in the second one, if not return false
-            if letter in t:
-                continue
+        lens = len(s)
+        lent = len(t)
+        i , j = 0 , 0
+        if lens == "": return True
+        if lens > lent: return False
+        while (i<lens and j<lent): #iterate through the subsequence and move along the larger word to find its presence
+            if s[i] == t[j]:
+                i += 1
+                j += 1
             else:
-                return False
-        for i in range(len(s)-1):  #loop through the first word and compare the index of the current letter to the index of the next one.  If the next one is not higher then return false.
-            if t.index(s[i]) < t.index(s[i+1]):
-                continue
-            else:
-                return False
-        return True
-
+                j += 1
+        if i == lens:
+            return True
+        else:
+            return False
 
 
 

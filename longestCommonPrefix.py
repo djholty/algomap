@@ -2,7 +2,7 @@ class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if not strs:
             return ""
-        if len(strs) <2:
+        if len(strs) ==1:
             return strs[0]
         
         # Find the length of the shortest word

@@ -5,7 +5,16 @@ class Solution:
             for j in range(i+1, len(nums)):
                 if nums[i] + nums [j] == target:
                     return (i , j)
-
+O(N) alternative
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        nums_index = {} #stores the index of the numbers
+        
+        for i, value in enumerate(nums):
+            complement = target - value
+            if complement in nums_index:
+                return nums_index[complement], i
+            nums_index[value] = i
 """
 1. Two Sum
 Solved

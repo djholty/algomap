@@ -4,6 +4,23 @@ class Solution:
         for num in nums:
             squares.append(num*num)
         return sorted(squares)
+#Alternative solution without using built-in sorted function
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        squares = [0]*len(nums)
+        squares_index = len(nums)-1
+        print(squares)
+        ptr_l = 0
+        ptr_r = len(nums) - 1
+        while ptr_l <= ptr_r:
+            if nums[ptr_l]**2 > nums[ptr_r]**2:
+                squares[squares_index] = nums[ptr_l]**2
+                ptr_l += 1
+            else:
+                squares[squares_index] = nums[ptr_r]**2
+                ptr_r -= 1
+            squares_index -= 1
+        return squares
 
   """
   977. Squares of a Sorted Array

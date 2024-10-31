@@ -1,0 +1,21 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        current = head
+        while current and current.next: #if there is another node
+            if current.val == current.next.val: #found duplicate node
+                current.next = current.next.next #assign curent node's next to point at node after the duplicate
+                #current = current.next keeping this line here causes this to miss consecutive duplicates ie 3 in a row.
+            else: 
+                current = current.next
+            
+        return head
+            
+            
+        
+

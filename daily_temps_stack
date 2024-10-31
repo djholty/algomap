@@ -1,4 +1,4 @@
-
+#example of monotonic decreasing stack (since it is looking for next higher temp)
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         answer = [0]*len(temperatures) #create an answer array to hold the number of days until warmer day

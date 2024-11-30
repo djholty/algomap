@@ -1,0 +1,54 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        
+        def same(p,q):
+            if not p and not q: #indicates neither root exists so return True
+                return True
+            if (not p and q) or (not q and p): #if one node exists and the other doesnt then theyre not equivalent
+                return False
+            if p.val != q.val: #if both nodes exists and the value is different, then not equal
+                return False
+            return same(p.left, q.left) and same(p.right, q.right)
+        return same(p,q)
+
+"""
+100. Same Tree
+Easy
+Topics
+Companies
+
+Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+ 
+
+Example 1:
+
+Input: p = [1,2,3], q = [1,2,3]
+Output: true
+
+Example 2:
+
+Input: p = [1,2], q = [1,null,2]
+Output: false
+
+Example 3:
+
+Input: p = [1,2,1], q = [1,1,2]
+Output: false
+
+ 
+
+Constraints:
+
+    The number of nodes in both trees is in the range [0, 100].
+    -104 <= Node.val <= 104
+
+"""

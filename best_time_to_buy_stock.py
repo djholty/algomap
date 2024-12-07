@@ -36,6 +36,19 @@ class Solution:
         return maxprofit
 
   """
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        maxprofit = 0
+        minprice = float('inf')
+        for price in prices:
+            if price < minprice:
+                minprice = price
+        
+            profit = price - minprice
+            maxprofit = max(maxprofit, profit)
+
+        return maxprofit
+  
   121. Best Time to Buy and Sell Stock
 Solved
 Easy

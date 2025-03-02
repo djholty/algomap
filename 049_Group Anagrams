@@ -1,0 +1,57 @@
+from collections import defaultdict
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list) #dictionary to store grouped anagrams
+
+
+        for s in strs:
+            alphabet = [0]*26 #create array where if 'a' is found, index 0 is incremented
+            for c in s:
+                #get index value of c to put in alphabet array
+                index = ord(c) - 97
+                alphabet[index] += 1
+            alphabet = tuple(alphabet) #convert to tuple so it can be used as a dictionary key
+            groups[alphabet].append(s) #add word to groups dictionary list
+        
+        #now that all the words have been grouped, we need to return a list of grouped lists
+        return list(groups.values())
+
+        """
+        Given an array of strings strs, group the
+
+together. You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Explanation:
+
+    There is no string in strs that can be rearranged to form "bat".
+    The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
+    The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+
+Example 2:
+
+Input: strs = [""]
+
+Output: [[""]]
+
+Example 3:
+
+Input: strs = ["a"]
+
+Output: [["a"]]
+
+ 
+
+Constraints:
+
+    1 <= strs.length <= 104
+    0 <= strs[i].length <= 100
+    strs[i] consists of lowercase English letters.
+"""

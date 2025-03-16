@@ -1,0 +1,9 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        counter = Counter(arr)
+        s = set()
+        for value in counter.values():
+            if value in s:
+                return False
+            s.add(value)
+        return True
